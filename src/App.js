@@ -7,22 +7,24 @@ import Header from "./Header";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('')
-// useEffect(() => {
+//////////////////////// API ASYNC/AWAIT METHOD////////////////////////////////
+  // useEffect(() => {
 //   const fetchItems = async () => {
 //     const result = await axios(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`)
-
 //     console.log(result.data);
-    
 //   }
 //   fetchItems();
 // }, [])
+//////////////////////// API .THEN METHOD////////////////////////////////
 useEffect(() => {
   axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false`)
     .then(res => {
       setCoins(res.data);
-      console.log(res.data); // Optional: Used to check data
+      // console.log(res.data); // Optional: Used to check data
     }).catch(error => console.log(error))  // Optional: This is a "Promise" used to flag errors in the API connection
 }, [])
+
+// ////////THIS IS FOR THE SEARCH BAR///////////////////////
 //Used to handle the search bar
 const handleChange = e => {
   setSearch(e.target.value)
@@ -32,7 +34,7 @@ const handleChange = e => {
 const filteredCoins = coins.filter(coin =>
   coin.name.toLowerCase().includes(search.toLowerCase())
 )
-
+// ////////END OF SEARCH BAR FUNCTION///////////////////////
 
   return (
     <div className="coin-app">
