@@ -51,7 +51,7 @@ const filteredCoins = coins.filter(coin =>
         return (
           <Coin key={coin.id} rank={coin.market_cap_rank} name={coin.name} image={coin.image} symbol={coin.symbol} marketcap={coin.market_cap} price={coin.current_price} priceChange24={coin.price_change_24h} priceChange={coin.price_change_percentage_24h} volume={coin.total_volume} />
         );
-      })};  
+      })}
     </div>
   );
 };
